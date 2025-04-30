@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEYOND API HUB - PREMIUM APIS</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.16.30/font/lucide.css" rel="stylesheet">
+  <meta property="og:title" content="Beyond API Endpoints">
+  <meta property="og:image" content="https://files.catbox.moe/3h22n6.jpeg">
+  <meta property="og:url" content="https://draculazyx-xyzdrac.hf.space">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --primary-light: #8b5cf620;
+      --secondary: #ec4899;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --info: #3b82f6;
+      
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --card-bg: rgba(15, 15, 25, 0.6);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      
+      --glass-bg: rgba(15, 15, 25, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      
+      --neon-pink: #ec4899;
+      --neon-purple: #8b5cf6;
+      --neon-cyan: #06b6d4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--darker-bg);
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    /* Cyberpunk Scanlines Effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(
+          rgba(18, 16, 16, 0) 50%, 
+          rgba(0, 0, 0, 0.25) 50%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 0.06),
+          rgba(0, 255, 0, 0.02),
+          rgba(0, 0, 255, 0.06)
+        );
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.3;
+    }
+
+    /* Floating Particles */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Glassmorphism Effect */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    }
+
+    /* Cyberpunk Glow Text */
+    .cyber-glow {
+      text-shadow: 0 0 5px var(--neon-pink), 
+                   0 0 10px var(--neon-pink),
+                   0 0 20px var(--neon-pink);
+    }
+
+    /* Cyberpunk Glow Border */
+    .cyber-border {
+      box-shadow: 0 0 10px var(--neon-pink), 
+                  0 0 20px var(--neon-purple),
+                  inset 0 0 10px var(--neon-pink);
+    }
+
+    /* Keyframe Animations */
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 var(--neon-cyan), -2px 0 var(--neon-pink); }
+      25% { text-shadow: -2px 0 var(--neon-cyan), 2px 0 var(--neon-pink); }
+      50% { text-shadow: 2px 0 var(--neon-purple), -2px 0 var(--neon-cyan); }
+      75% { text-shadow: -2px 0 var(--neon-purple), 2px 0 var(--neon-cyan); }
+      100% { text-shadow: 2px 0 var(--neon-cyan), -2px 0 var(--neon-pink); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+@keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes hologram {
+      0% { opacity: 0.8; filter: brightness(1.2); }
+      50% { opacity: 1; filter: brightness(1.5); }
+      100% { opacity: 0.8; filter: brightness(1.2); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 20px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      margin: 30px auto;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(139, 92, 246, 0.1) 30%,
+        rgba(236, 72, 153, 0.1) 70%,
+        transparent 100%
+      );
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* Search Bar */
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 15px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+.stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* API Container */
+    .api-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      padding: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* API Card */
+    .api-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      height: 100%;
+      min-height: 300px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .api-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+      border-color: var(--primary);
+    }
+
+    .api-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(139, 92, 246, 0.1) 0%,
+        rgba(236, 72, 153, 0.1) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .api-card:hover::before {
+      opacity: 1;
+    }
+
+    .api-card-content {
+      padding: 25px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .api-card-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .api-icon {
+      background: var(--primary-light);
+      color: var(--primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .api-card h2 {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .api-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .endpoint-info {
+      margin-top: auto;
+    }
+
+    .api-url-container {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .api-url {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(10, 10, 20, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.3s ease;
+    }
+
+    .api-url:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-light);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .api-btn {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .api-btn i {
+      font-size: 0.9rem;
+    }
+
+    .copy-btn {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .test-btn {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 0 15px var(--primary);
+    }
+
+    .test-btn:hover {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    /* Status Indicator */
+    .status-indicator {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+.status-active {
+      background-color: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .status-inactive {
+      background-color: var(--danger);
+      animation: flicker 1.5s infinite;
+    }
+
+    .status-loading {
+      background-color: var(--warning);
+      animation: pulse 1s infinite;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2);
+      border-color: var(--primary);
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .feature-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 30px;
+      position: relative;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-icon {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .tagline {
+        font-size: 1.3rem;
+      }
+      
+      .stats {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .nav-links {
+        gap: 15px;
+      }
+      
+      .hero {
+        padding: 60px 20px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .tagline {
+        font-size: 1.1rem;
+      }
+      
+      .api-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+@media (max-width: 480px) {
+      .nav-links {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--darker-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary), var(--secondary));
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(var(--secondary), var(--primary));
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--text-primary);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      z-index: 10000;
+      animation: fadeOut 1s forwards;
+      animation-delay: 1s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Header -->
+  <header class="container">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-code logo-icon"></i>
+        <span>BEYOND API</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#apis" class="nav-link">APIs</a>
+        <a href="#" class="nav-link">Documentation</a>
+        <a href="#" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero container">
+    <h1>Premium API Services</h1>
+    <p class="tagline">Power your applications with our high-performance, reliable APIs designed for developers.</p>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search APIs...">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">APIs Available</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- API Container -->
+  <section class="container" id="apis">
+    <div id="api-container" class="api-container"></div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features container" id="features">
+    <div class="section-title">
+      <h2>Why Choose Our APIs?</h2>
+      <p>We provide the best API solutions with cutting-edge technology and exceptional support.</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Blazing Fast</h3>
+        <p>Our APIs are optimized for speed with low latency responses to ensure your applications run smoothly.</p>
+      </div>
+      
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Secure & Reliable</h3>
+        <p>Enterprise-grade security with encryption and authentication to protect your data and users.</p>
+      </div>
+      
+      <div class="feature-card glass">
+
+<div class="feature-icon">
+          <i class="fas fa-sliders-h"></i>
+        </div>
+        <h3>Easy Integration</h3>
+        <p>Simple RESTful APIs with comprehensive documentation and SDKs for popular platforms.</p>
+      </div>
+      
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Scalable</h3>
+        <p>Our infrastructure scales automatically to handle your growth without any downtime.</p>
+      </div>
+      
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3>24/7 Support</h3>
+        <p>Our team is always available to help you with any questions or issues you might have.</p>
+      </div>
+      
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3>Custom Solutions</h3>
+        <p>Need something specific? We can create custom API solutions tailored to your needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container">
+    <div class="footer-content">
+      <a href="#" class="footer-logo">
+        <i class="fas fa-code footer-logo-icon"></i>
+        <span>BEYOND API</span>
+      </a>
+      
+      <div class="footer-links">
+        <a href="#" class="footer-link">Home</a>
+        <a href="#features" class="footer-link">Features</a>
+        <a href="#apis" class="footer-link">APIs</a>
+        <a href="#" class="footer-link">Documentation</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Privacy</a>
+      </div>
+      
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2023 Beyond API Hub. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // API Data
+    const apis = [
+      {
+        name: Aptoide Downloader API,
+        description: Fetches APK Details (Name, Size, And Download Link) From Aptoide Based On The Given Search Query (?q=Facebook Lite).,
+        endpoint: /api/Apk2,
+        icon: "download"
+      },
+      {
+        name: ApkFab Downloader API,
+        description: Fetches APK Details (Title, Size, App ID, And Download Link) From APKFab Based On The Given Search Query (?q=free fire).,
+        endpoint: /api/Apk,
+        icon: "box"
+      },
+      {
+        name: Anime Character API,
+        description: Retrieves Information About An Anime Character. Use (?type=character&name=naruto) To Search For A Specific Character. Use (?type=random) To Get A Random Anime Character.,
+        endpoint: /api/Character,
+        icon: "user-ninja"
+      },
+      {
+        name: Anime Downloader API,
+        description: Retrieves An Anime Episode And Download Link Using (?q=Solo Leveling 2&ep=1) As The Parameter.,
+        endpoint: /api/Animedl,
+        icon: "play-circle"
+      },
+      {
+        name: Anime Quotes API,
+        description: Fetches A Random Anime Quote With Its Author And Anime Title.,
+        endpoint: /api/aniQuotes,
+        icon: "quote-left"
+      },
+      {
+        name: Artificial Intelligence API,
+        description: Retrieves Responses From An Artificial Intelligence Engine Using (?q=Hello) As The Parameter.,
+
+endpoint: /api/Ai,
+        icon: "robot"
+      },
+      {
+        name: Calculator API,
+        description: Performs Both Simple And Advanced Calculations Using(?q=sin(30)+sqrt(16)) As The Parameter.,
+        endpoint: /api/Calculator,
+        icon: "calculator"
+      },
+      {
+        name: Couple Pfp API,
+        description: Get Random Couple Pfp Links,
+        endpoint: /api/Couple,
+        icon: "heart"
+      },
+      {
+        name: Country Info API,
+        description: Retrieves Detailed Information About A Country Using Its Name As A Parameter (?q=Nigeria). Returns Data Such As Capital, Population, Languages, Currencies, Timezone, And More.,
+        endpoint: /api/Country,
+        icon: "globe"
+      },
+      {
+        name: Currency API,
+        description: Retrieves Live Currency Exchange Rates Using (?q=USD-NGN-100) As The Parameter.,
+        endpoint: /api/Currency,
+        icon: "money-bill-wave"
+      },
+      {
+        name: Decode API,
+        description: Decodes The Given Binary Into Text Format (?q=0101110 01110) As The Parameter.,
+        endpoint: /api/Decode,
+        icon: "code"
+      },
+      {
+        name: Doc-to-Url API,
+        description: Turns Document to Url Using Post Request.,
+        endpoint: /api/Document,
+        icon: "convert"
+      },
+      {
+        name: Encode API,
+        description: Encodes The Given Text Into Binary Format (?q=KING DRACULA) As The Parameter.,
+        endpoint: /api/Encode,
+        icon: "key"
+      },
+      {
+        name: Fake Identity & Credit Card Generator API,
+        description: Generates A Fake Identity With Realistic Details Such As Name, Gender, Birthdate, Address, Phone Number, Email, Nationality, Job Title, And Company. Also Includes Randomly Generated Credit Card Details Like Card Number, Type, CVV, And Expiry Date. Supports Optional Country-Based Identity Generation Using (?country=Japan).,
+        endpoint: /api/Card,
+        icon: "id-card"
+      },
+      {
+        name: Fake Identity Generator API,
+        description: Generate A Random Fake Identity, Including Name, Email, Phone, Address, And Profile Picture. Do Not Add Anything For Random Generation. Use (?gender=male) For A Specific Gender Or (?country=US) For A Specific Nationality. Example: /api/fake-identity?gender=female&country=CA.,
+        endpoint: /api/Fake,
+        icon: "user-secret"
+      },
+      {
+        name: GitHub Repository Cloner API,
+        description: Fetch And Download A GitHub Repository As A ZIP File Using (?repo=repo-url&direct=true) To Get The Direct Download Link.,
+        endpoint: /api/Gitclone,
+        icon: "github"
+      },
+      {
+        name: Hentai API,
+        description: Retrieves A Random Hentai Video.,
+        endpoint: /api/hentai,
+        icon: "eye"
+      },
+      {
+        name: IP Tracker API,
+        description: Gets Details Of Any Given IP Address (?ip=112.90.150.204) As The Parameter.,
+        endpoint: /api/Trackip,
+        icon: "map-marker-alt"
+      },
+      {
+        name: Lyrics API,
+        description: Retrieves A Song Lyrics Using  (?q=Not Like Us) As The Parameter.,
+        endpoint: /api/Lyrics,
+        icon: "music"
+      },
+      {
+        name: MediaFire API,
+        description: Gets Details Of A Given MediaFire Download URL (?url=download_link).,
+        endpoint: /api/Mediafire,
+        icon: "cloud-download-alt"
+      },
+      {
+        name: Movie API,
+        description: Fetches Movie Details Based On The Given Query Using (?query=moana+2) As The Parameter. And If It's A Series The Parameter Will Be (/episode?query=Solo Leveling S01EP01).,
+        endpoint: /api/Movie,
+        icon: "film"
+      },
+      {
+        name: Npm Search API,
+
+description: Gets Details Of Any Npm Package Using (?q=axios) As The Parameter.,
+        endpoint: /api/Npm,
+        icon: "npm"
+      },
+      {
+        name: Pinterest API,
+        description: Fetches Images And Titles From Pinterest Based On The Given Search Query (?q=Naruto) As The Parameter.,
+        endpoint: /api/Pinterest,
+        icon: "image"
+      },
+      {
+        name: Remini API,
+        description: Enhances An Image Using Post Request.,
+        endpoint: /api/Remini,
+        icon: "image"
+      },
+      {
+        name: Screenshot API,
+        description: Take A Full-Page Screenshot Of A Given URL (?url=https://vm.tiktok.com/ZMBLsg9Fn/).,
+        endpoint: /api/Screenshot,
+        icon: "camera"
+      },
+      {
+        name: Shazam API,
+        description: Gets Details Of A Given Audio File Using Post Request.,
+        endpoint: /api/Shazam,
+        icon: "microphone"
+      },
+      {
+        name: Spotify API,
+        description: Retrieves Details For A Spotify Song Using (?q=Not Like Us) As The Parameter.,
+        endpoint: /api/Spotify,
+        icon: "spotify"
+      },
+      {
+        name: Text API,
+        description: Transforms The Given Text Into Different Styles Using (?text=Dracula) As The Parameter.,
+        endpoint: /api/Text,
+        icon: "font"
+      },
+      {
+        name: TikTok Downloader API,
+        description: Retrieves Download Links And Details For A Given TikTok Video Using (?url=https://vm.tiktok.com/ZMBd7nk6J/) As The Parameter.,
+        endpoint: /api/Tkdl,
+        icon: "video"
+      },
+      {
+        name: To-Url API,
+        description: This API Uploads Any Image Using Post Request And Gets The URL Of The Uploaded Image.,
+        endpoint: /api/Tourl,
+        icon: "link"
+      },
+      {
+        name: Translator API,
+        description: Translates Any Given Text Into A Desired Language Using (?text=Hello&lang=fr) As The Parameter.,
+        endpoint: /api/Translate,
+        icon: "language"
+      },
+      {
+        name: Url Shortener API,
+        description: Shortens Any Given URL Using (?url=https://google.com) As The Parameter.,
+        endpoint: /api/Shorten,
+        icon: "compress-alt"
+      },
+      {
+        name: Wallpaper API,
+        description: Retrieves Download Links Of WalWallpapers Through Given Query Using (?q=Satoru Gojo) As The Parameter.,
+        endpoint: /api/Wall,
+        icon: "image"
+      },
+      {
+        name: Weather API,
+        description: Gets The Weather Forecast Of Any Place Using (?q=Lagos) As The Parameter.,
+        endpoint: /api/Weather,
+        icon: "cloud-sun"
+      },
+      {
+        name: Wikipedia API,
+        description: Retrieves Search Results From Wikipedia Using The Format (?q=Albert+Einstein) As The Parameter.,
+        endpoint: /api/Wiki,
+        icon: "wikipedia-w"
+      },
+      { 
+       name: Xvideos API,
+       description: Retrieves Random Xvideos Using (?q=Fat Ass Stepmom) As The Parameter.,
+       endpoint: /api/Xvideos,
+       icon: "file-video"
+      },
+      {
+        name: YtSearch API,
+        description: Retrieves Multiple Song Details Using (?q=Faded+Alan+Walker) As The Parameter.,
+        endpoint: /api/ytsearch,
+        icon: "youtube"
+      },
+      {
+        name: Ytmp3 API,
+        description: Retrieves The Audio Format And Download Link Of A Given YouTube Video URL Using (?url=YouTube_video_link) As The Parameter.,
+        endpoint: /api/Ytmp3,
+        icon: "file-audio"
+      },
+      {
+        name: Ytmp4 API,
+        description: Retrieves The Video Format And Download Links Of A Given Song YouTube Video URL Using (?url=YouTube_video_link) As The Parameter.,
+        endpoint: /api/Ytmp4,
+
+icon: "file-video"
+      },
+      {
+        name: Username Generator API,
+        description: Generate A Unique Username Based On A Massive List Of Over 1,000 Words. Optionally, Add A Custom Keyword For A Personalized Touch. (?keyword=Dracula) To Generate Usernames Like 'DraculaPhantom7283'.,
+        endpoint: /api/Username,
+        icon: "user-tag"
+      }
+    ];
+
+    // Initialize the API container
+    const apiContainer = document.getElementById('api-container');
+
+    // Create API cards
+    apis.forEach((api, index) => {
+      const apiCard = document.createElement('div');
+      apiCard.className = 'api-card glass';
+      
+      const fullUrl = window.location.origin + api.endpoint;
+      const endpointId = api.endpoint.replace(/\//g, '-').substring(1);
+
+      apiCard.innerHTML = 
+        <div class="api-card-content">
+          <span class="status-indicator status-loading" id="status-${endpointId}"></span>
+          
+          <div class="api-card-header">
+            <div class="api-icon">
+              <i class="fas fa-${api.icon}"></i>
+            </div>
+            <div>
+              <h2>${api.name}</h2>
+            </div>
+          </div>
+          
+          <p>${api.description}</p>
+          
+          <div class="endpoint-info">
+            <div class="api-url-container">
+              <input type="text" class="api-url" value="${fullUrl}" readonly>
+            </div>
+            <div class="button-group">
+              <button class="api-btn copy-btn" data-url="${fullUrl}">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+              <button class="api-btn test-btn" data-url="${fullUrl}">
+                <i class="fas fa-rocket"></i> Test
+              </button>
+            </div>
+          </div>
+        </div>
+      ;
+
+      apiContainer.appendChild(apiCard);
+    });
+
+    // Add event listeners for buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('copy-btn') || e.target.closest('.copy-btn')) {
+        const btn = e.target.classList.contains('copy-btn') ? e.target : e.target.closest('.copy-btn');
+        const url = btn.getAttribute('data-url');
+        navigator.clipboard.writeText(url);
+        
+        // Create a temporary tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = 'Copied!';
+        tooltip.style.top = (e.clientY - 40) + 'px';
+        tooltip.style.left = e.clientX + 'px';
+        document.body.appendChild(tooltip);
+        
+        setTimeout(() => {
+          document.body.removeChild(tooltip);
+        }, 2000);
+      }
+      
+      if (e.target.classList.contains('test-btn') || e.target.closest('.test-btn')) {
+        const btn = e.target.classList.contains('test-btn') ? e.target : e.target.closest('.test-btn');
+        const url = btn.getAttribute('data-url');
+        window.open(url, '_blank');
+      }
+    });
+
+    // Search functionality
+    const searchBar = document.querySelector('.search-bar');
+    searchBar.addEventListener('input', () => {
+      const searchTerm = searchBar.value.toLowerCase();
+      const cards = document.querySelectorAll('.api-card');
+      
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+
+"value_area": 800
+          }
+        },
+        "color": {
+          "value": "#8b5cf6"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#8b5cf6",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // API Status Monitoring
+    function checkAPIStatus(endpoint, elementId) {
+      const statusElement = document.getElementById(elementId);
+      const responseTimeElement = document.querySelector(.api-url[value*="${endpoint}"]);
+      
+      // Simulate API check (in a real implementation, you would actually ping the endpoint)
+      const isActive = Math.random() > 0.2; // 80% chance of being active for demo
+      const responseTime = Math.floor(Math.random() * 300) + 50; // Random response time between 50-350ms
+      
+      setTimeout(() => {
+        statusElement.classList.remove('status-loading');
+        
+        if (isActive) {
+          statusElement.classList.add('status-active');
+          if (responseTimeElement) {
+            responseTimeElement.style.color = 'var(--accent)';
+            responseTimeElement.style.borderColor = 'var(--accent)';
+          }
+        } else {
+          statusElement.classList.add('status-inactive');
+          if (responseTimeElement) {
+            responseTimeElement.style.color = 'var(--danger)';
+            responseTimeElement.style.borderColor = 'var(--danger)';
+          }
+        }
+      }, 500);
+    }
+
+    // Check status for all API endpoints
+    apis.forEach(api => {
+      const endpoint = api.endpoint.replace(/\//g, '-').substring(1);
+      checkAPIStatus(api.endpoint, status-${endpoint});
+      
+      // Check status every 30 seconds
+      setInterval(() => {
+        const statusElement = document.getElementById(status-${endpoint});
+        statusElement.classList.remove('status-active', 'status-inactive');
+        statusElement.classList.add('status-loading');
+        checkAPIStatus(api.endpoint, status-${endpoint});
+      }, 30000);
+    });
+
+// Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+ `
